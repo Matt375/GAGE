@@ -18,8 +18,8 @@ public class Seeker2 extends SpaceEntity {
      * random size for the Seeker
      */
     private static Random r = new Random();
-    private static float max = 30;
-    private static float min = 10;
+    private static float max = 40;
+    private static float min = 30;
     private static float size = min + r.nextFloat() * max;
     /**
      * Distance at which the spaceship should avoid other game objects

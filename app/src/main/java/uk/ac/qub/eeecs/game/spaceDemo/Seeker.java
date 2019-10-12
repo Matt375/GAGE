@@ -28,7 +28,7 @@ public class Seeker extends SpaceEntity {
      */
     private static Random r = new Random();
     private static float max = 40;
-    private static float min = 20;
+    private static float min = 30;
     private static float size = min + r.nextFloat() * max;
     /**
      * Distance at which the spaceship should avoid other game objects
@@ -68,10 +68,10 @@ public class Seeker extends SpaceEntity {
         super(startX, startY, size,size, null, gameScreen);
 
         // Define movement variables for the seeker
-        maxAcceleration = 30.0f;
-        maxVelocity = 50.0f;
-        maxAngularVelocity = 300.0f;
-        maxAngularAcceleration = 300.0f;
+        maxAcceleration = 70.0f;
+        maxVelocity = 70.0f;
+        maxAngularVelocity = 150.0f;
+        maxAngularAcceleration = 150.0f;
 
         mRadius = size;
         mMass = 10.0f;

@@ -38,8 +38,8 @@ public class SpaceshipDemoScreen extends GameScreen {
     /**
      * Width and height of the level
      */
-    private final float LEVEL_WIDTH = 1000.0f;
-    private final float LEVEL_HEIGHT = 1000.0f;
+    private final float LEVEL_WIDTH = 2000.0f;
+    private final float LEVEL_HEIGHT = 2000.0f;
 
     /**
      * Define a viewport for the game objects (spaceships, asteroids)
@@ -59,9 +59,9 @@ public class SpaceshipDemoScreen extends GameScreen {
     /**
      * Define the number of objects in the game world
      */
-    private final int NUM_ASTEROIDS = 20;
-    private final int NUM_SEEKERS = 20;
-    private final int NUM_TURRETS = 10;
+    private final int NUM_ASTEROIDS = 40;
+    private final int NUM_SEEKERS = 40;
+    private final int NUM_TURRETS = 20;
 
     /**
      * Define storage for the space entities (non-player)
@@ -317,9 +317,23 @@ public class SpaceshipDemoScreen extends GameScreen {
         else if (mSpaceLayerViewport.getTop() > LEVEL_HEIGHT)
             mSpaceLayerViewport.y -= (mSpaceLayerViewport.getTop() - LEVEL_HEIGHT);
 
-        // Update each of the space entities
+        // Update each of the space entities checking if they are within the level boundaries
         for (SpaceEntity spaceEntity : mSpaceEntities)
+        {
             spaceEntity.update(elapsedTime);
+
+            BoundingBox spaceEntityBound = spaceEntity.getBound();
+
+            if (spaceEntityBound.getLeft() < 0)
+                spaceEntity.position.x -= spaceEntityBound.getLeft();
+            else if (spaceEntityBound.getRight() > LEVEL_WIDTH)
+                spaceEntity.position.x -= (spaceEntityBound.getRight() - LEVEL_WIDTH);
+
+            if (spaceEntityBound.getBottom() < 0)
+                spaceEntity.position.y -= spaceEntityBound.getBottom();
+            else if (spaceEntityBound.getTop() > LEVEL_HEIGHT)
+                spaceEntity.position.y -= (spaceEntityBound.getTop() - LEVEL_HEIGHT);
+        }
 
         // Check for and resolve collisions between the space entities
         for(int entityIdx = 0; entityIdx < mSpaceEntities.size(); entityIdx++) {
