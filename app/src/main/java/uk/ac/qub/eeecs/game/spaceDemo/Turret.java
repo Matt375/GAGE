@@ -43,14 +43,13 @@ public class Turret extends SpaceEntity {
 
         maxAcceleration = 0.0f;
         maxVelocity = 0.0f;
-        maxAngularVelocity = 50.0f;
-        maxAngularAcceleration = 50.0f;
+        maxAngularVelocity = 500.0f;
+        maxAngularAcceleration = 500.0f;
         mBitmap = gameScreen.getGame().getAssetManager().getBitmap("Turret");
 
         mRadius = DEFAULT_RADIUS;
         mMass = 10000.0f;
     }
-
     // /////////////////////////////////////////////////////////////////////////
     // Methods
     // /////////////////////////////////////////////////////////////////////////

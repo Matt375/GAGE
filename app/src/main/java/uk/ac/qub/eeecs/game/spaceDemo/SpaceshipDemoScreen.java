@@ -168,6 +168,11 @@ public class SpaceshipDemoScreen extends GameScreen {
             mSpaceEntities.add(new Seeker(random.nextFloat() * LEVEL_WIDTH,
                     random.nextFloat() * LEVEL_HEIGHT, this));
 
+        // Create a number of randomly positioned AI controlled seeker2s
+        for (int idx = 0; idx < NUM_SEEKERS; idx++)
+            mSpaceEntities.add(new Seeker2(random.nextFloat() * LEVEL_WIDTH,
+                    random.nextFloat() * LEVEL_HEIGHT, this));
+
         // Create a number of randomly positioned AI controlled turrets
         for (int idx = 0; idx < NUM_TURRETS; idx++)
             mSpaceEntities.add(new Turret(random.nextFloat() * LEVEL_WIDTH,

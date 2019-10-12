@@ -24,9 +24,9 @@ public class Asteroid extends SpaceEntity {
      */
     private static Random r = new Random();
     private static float max = 50;
-    private static  float min = 5;
-    private static final float WIDTH = r.nextFloat() * (max + min);
-    private static final float HEIGHT = r.nextFloat() * (max - min);
+    private static  float min = 20;
+    private static final float WIDTH = min + r.nextFloat() * max;
+    private static final float HEIGHT = min + r.nextFloat() * max;
 
     // /////////////////////////////////////////////////////////////////////////
     // Constructors

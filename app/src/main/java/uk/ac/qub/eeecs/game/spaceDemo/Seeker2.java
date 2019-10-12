@@ -9,16 +9,7 @@ import uk.ac.qub.eeecs.gage.util.MathsHelper;
 import uk.ac.qub.eeecs.gage.util.SteeringBehaviours;
 import uk.ac.qub.eeecs.gage.util.Vector2;
 
-/**
- * AI controlled spaceship that will seek towards the player.
- *
- * Note: See the course documentation for extension/refactoring stories
- * for this class.
- *
- * @version 1.0
- */
-public class Seeker extends SpaceEntity {
-
+public class Seeker2 extends SpaceEntity {
     // /////////////////////////////////////////////////////////////////////////
     // Properties
     // /////////////////////////////////////////////////////////////////////////
@@ -27,8 +18,8 @@ public class Seeker extends SpaceEntity {
      * random size for the Seeker
      */
     private static Random r = new Random();
-    private static float max = 40;
-    private static float min = 20;
+    private static float max = 30;
+    private static float min = 10;
     private static float size = min + r.nextFloat() * max;
     /**
      * Distance at which the spaceship should avoid other game objects
@@ -64,20 +55,20 @@ public class Seeker extends SpaceEntity {
      * @param startY        y location of the AI spaceship
      * @param gameScreen    Gamescreen to which AI belongs
      */
-    public Seeker(float startX, float startY, SpaceshipDemoScreen gameScreen) {
+    public Seeker2(float startX, float startY, SpaceshipDemoScreen gameScreen) {
         super(startX, startY, size,size, null, gameScreen);
 
         // Define movement variables for the seeker
         maxAcceleration = 30.0f;
         maxVelocity = 50.0f;
-        maxAngularVelocity = 300.0f;
+        maxAngularVelocity = 150.0f;
         maxAngularAcceleration = 300.0f;
 
         mRadius = size;
         mMass = 10.0f;
 
         // Define the appearance of the seeker
-        mBitmap = gameScreen.getGame().getAssetManager().getBitmap("Spaceship2");
+        mBitmap = gameScreen.getGame().getAssetManager().getBitmap("Spaceship3");
 
         // Create an offset for the movement emitter based on the size of the spaceship
         movementEmitterOffset = new Vector2(-size, 0.0f);
