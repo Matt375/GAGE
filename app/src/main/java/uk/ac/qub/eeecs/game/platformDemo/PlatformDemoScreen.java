@@ -116,19 +116,51 @@ public class PlatformDemoScreen extends GameScreen {
         // A simple (but not that useful) approach is used to position the platforms
         // to avoid overlapping.
         Random random = new Random();
-        int numPlatforms = 30, platformOffset = 200;
+        int numPlatform1s = 1, numPlatform2s = 1, numPlatform3s = 1, platformOffset = 200;
+
         float platformWidth = 70, platformHeight = 70, platformX, platformY = platformHeight;
-        for (int idx = 0; idx < numPlatforms; idx++) {
+        float platformWidth2 = 100, platformHeight2 = 50, platformX2, platformY2 = platformHeight2;
+        float platformWidth3 = 125, platformHeight3 = 30, platformX3, platformY3 = platformHeight3;
+
+        for (int idx = 0; idx < numPlatform1s; idx++){
             platformX = platformOffset;
-            if(random.nextFloat() > 0.33f)
+
+            if(random.nextFloat() > 0.33f);
                 platformY = (random.nextFloat() * (LEVEL_HEIGHT - platformHeight));
+
             mPlatforms.add(new Platform( platformX, platformY, platformWidth, platformHeight,
                     "Platform", this));
+
             platformOffset += (random.nextFloat() > 0.5f ?
                     platformWidth : platformWidth + random.nextFloat()*platformWidth);
         }
-    }
+        for (int idx = 0; idx < numPlatform2s; idx++){
+            platformX2 = platformOffset;
 
+            if(random.nextFloat() > 0.33f)
+                platformY2 = (random.nextFloat() * (LEVEL_HEIGHT - platformHeight2));
+
+            mPlatforms.add(new Platform( platformX2, platformY2, platformWidth2, platformHeight2,
+                    "Platform2", this));
+
+            platformOffset += (random.nextFloat() > 0.5f ?
+                    platformWidth2 : platformWidth2 + random.nextFloat()*platformWidth2);
+        }
+
+        for (int idx = 0; idx < numPlatform3s; idx++) {
+            platformX3 = platformOffset;
+
+            if(random.nextFloat() > 0.33f)
+                platformY3 = (random.nextFloat() * (LEVEL_HEIGHT - platformHeight3));
+
+
+            mPlatforms.add(new Platform( platformX3, platformY3, platformWidth3, platformHeight3,
+                    "Platform3", this));
+
+            platformOffset += (random.nextFloat() > 0.5f ?
+                    platformWidth3 : platformWidth3 + random.nextFloat()*platformWidth3);
+        }
+    }
     // /////////////////////////////////////////////////////////////////////////
     // Update and Draw
     // /////////////////////////////////////////////////////////////////////////

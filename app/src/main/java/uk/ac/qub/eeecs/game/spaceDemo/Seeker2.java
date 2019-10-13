@@ -96,7 +96,7 @@ public class Seeker2 extends SpaceEntity {
     public void update(ElapsedTime elapsedTime) {
 
         // Seek towards the player
-        SteeringBehaviours.seek(this,
+        SteeringBehaviours.flee(this,
                 ((SpaceshipDemoScreen) mGameScreen).getPlayerSpaceship().position,
                 acceleration);
 

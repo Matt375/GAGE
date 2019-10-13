@@ -163,10 +163,10 @@ public class SpaceshipDemoScreen extends GameScreen {
             mSpaceEntities.add(new Asteroid(random.nextFloat() * LEVEL_WIDTH,
                     random.nextFloat() * LEVEL_HEIGHT, this));
 
-        // Create a number of randomly positioned AI controlled seekers
-        for (int idx = 0; idx < NUM_SEEKERS; idx++)
-            mSpaceEntities.add(new Seeker(random.nextFloat() * LEVEL_WIDTH,
-                    random.nextFloat() * LEVEL_HEIGHT, this));
+        //Create a number of randomly positioned AI controlled seekers
+       for (int idx = 0; idx < NUM_SEEKERS; idx++)
+           mSpaceEntities.add(new Seeker(random.nextFloat() * LEVEL_WIDTH,
+                   random.nextFloat() * LEVEL_HEIGHT, this));
 
         // Create a number of randomly positioned AI controlled seeker2s
         for (int idx = 0; idx < NUM_SEEKERS; idx++)
@@ -280,7 +280,6 @@ public class SpaceshipDemoScreen extends GameScreen {
             audioManager.playMusic(
                     getGame().getAssetManager().getMusic("SpaceBackgroundMusic"));
     }
-
     /**
      * Update the space game object
      *

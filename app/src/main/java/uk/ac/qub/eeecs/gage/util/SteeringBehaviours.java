@@ -45,22 +45,28 @@ public class SteeringBehaviours {
      * @param targetPosition Target position
      * @param acceleration   Output flee acceleration
      */
+
+    private static Vector2 gapDistance = new Vector2();
+
     public static void flee(Sprite fleeingSprite, Vector2 targetPosition,
                             Vector2 acceleration) {
-        // Return if the body has reached the target
-        if (targetPosition.x == fleeingSprite.position.x
-                && targetPosition.y == fleeingSprite.position.y) {
-            acceleration.set(Vector2.Zero);
-        } else {
+        //gap between sprite and target
+        gapDistance.set(targetPosition.x - fleeingSprite.position.x, targetPosition.y - fleeingSprite.position.y);
+        //converted gapDistance to float
+        float distance = gapDistance.length();
 
+        //if the target's position is greater than the distance don't flee
+        if (distance < targetPosition.x && distance < targetPosition.y) {
             // Determine the seeking direction
             acceleration.set(fleeingSprite.position.x - targetPosition.x,
                     fleeingSprite.position.y - targetPosition.y);
             acceleration.normalise();
             acceleration.multiply(fleeingSprite.maxAcceleration);
+        } else {
+            acceleration.set(Vector2.Zero);
+
         }
     }
-
     // /////////////////////////////////////////////////////////////////////////
     // Arrive
     // /////////////////////////////////////////////////////////////////////////
