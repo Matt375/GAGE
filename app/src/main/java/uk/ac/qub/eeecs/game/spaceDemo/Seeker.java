@@ -26,10 +26,7 @@ public class Seeker extends SpaceEntity {
     /**
      * random size for the Seeker
      */
-    private static Random r = new Random();
-    private static float max = 40;
-    private static float min = 30;
-    private static float size = min + r.nextFloat() * max;
+    private static final float DEFAULT_RADIUS = 20;
     /**
      * Distance at which the spaceship should avoid other game objects
      */
@@ -65,7 +62,16 @@ public class Seeker extends SpaceEntity {
      * @param gameScreen    Gamescreen to which AI belongs
      */
     public Seeker(float startX, float startY, SpaceshipDemoScreen gameScreen) {
-        super(startX, startY, size,size, null, gameScreen);
+        super(startX, startY, DEFAULT_RADIUS * 2.0f, DEFAULT_RADIUS * 2.0f, null, gameScreen);
+
+        Random random = new Random();
+        float max = 40;
+        float min = 30;
+        float ranWidthVal = min + random.nextFloat() * max;
+        float ranHeightVal = min + random.nextFloat() * max;
+
+        setWidth(ranWidthVal);
+        setHeight(ranHeightVal);
 
         // Define movement variables for the seeker
         maxAcceleration = 70.0f;
@@ -73,14 +79,17 @@ public class Seeker extends SpaceEntity {
         maxAngularVelocity = 150.0f;
         maxAngularAcceleration = 150.0f;
 
-        mRadius = size;
+        mRadius = DEFAULT_RADIUS;
         mMass = 10.0f;
 
+        String[] spaceships = {"Spaceship2","Spaceship4","Spaceship5"};
+        String pickedSpaceship = spaceships[random.nextInt(spaceships.length)];
+
         // Define the appearance of the seeker
-        mBitmap = gameScreen.getGame().getAssetManager().getBitmap("Spaceship2");
+        mBitmap = gameScreen.getGame().getAssetManager().getBitmap(pickedSpaceship);
 
         // Create an offset for the movement emitter based on the size of the spaceship
-        movementEmitterOffset = new Vector2(-size, 0.0f);
+        movementEmitterOffset = new Vector2(-DEFAULT_RADIUS, 0.0f);
         movementEmitterLocation = new Vector2(position);
         movementEmitterLocation.add(movementEmitterOffset);
 

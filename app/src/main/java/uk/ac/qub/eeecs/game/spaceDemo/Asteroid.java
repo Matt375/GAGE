@@ -22,12 +22,7 @@ public class Asteroid extends SpaceEntity {
     /**
      * random width and height size for the asteroid
      */
-    private static Random r = new Random();
-    private static float max = 50;
-    private static  float min = 20;
-    private static final float WIDTH = min + r.nextFloat() * max;
-    private static final float HEIGHT = min + r.nextFloat() * max;
-
+    private static final float DEFAULT_RADIUS = 20;
     // /////////////////////////////////////////////////////////////////////////
     // Constructors
     // /////////////////////////////////////////////////////////////////////////
@@ -40,16 +35,25 @@ public class Asteroid extends SpaceEntity {
      * @param gameScreen Gamescreen to which asteroid belongs
      */
     public Asteroid(float startX, float startY, GameScreen gameScreen) {
-        super(startX, startY, WIDTH, HEIGHT, null, gameScreen);
+        super(startX, startY, DEFAULT_RADIUS * 2.0f, DEFAULT_RADIUS * 2.0f, null, gameScreen);
 
         Random random = new Random();
 
-        mBitmap = gameScreen.getGame().getAssetManager().getBitmap(random.nextBoolean() ? "Asteroid1" : "Asteroid2");
+        String[] asteroids = {"Asteroid1","Asteroid2","Asteroid3","Asteroid4"};
+        String pickedAsteroid = asteroids[random.nextInt(asteroids.length)];
+        mBitmap = gameScreen.getGame().getAssetManager().getBitmap(pickedAsteroid);
 
         mRadius = 20;
         mMass = 1000.0f;
 
         angularVelocity = random.nextFloat() * 240.0f - 20.0f;
 
+        float max = 50;
+        float min = 20;
+        float ranWidthVal = min + random.nextFloat() * max;
+        float ranHeightVal = min + random.nextFloat() * max;
+
+        setWidth(ranWidthVal);
+        setHeight(ranHeightVal);
     }
 }

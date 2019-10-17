@@ -126,7 +126,7 @@ public class SteeringBehaviours {
     /**
      * Default value that is used to control the align smoothness
      */
-    public static float ALIGN_DEFAULT_SMOOTHNESS = 10.0f;
+    public static float ALIGN_DEFAULT_SMOOTHNESS = 2.0f;
 
     /**
      * Align the orientation of the specified sprite with the target

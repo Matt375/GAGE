@@ -36,6 +36,7 @@ public class Player extends Sprite {
      * Acceleration with which the player can move along the x-axis
      */
     private final float RUN_ACCELERATION = 150.0f;
+    private final float RUN_ACCELERATION2 = 900.0f;
 
     /**
      * Maximum velocity of the player along the x-axis
@@ -54,6 +55,8 @@ public class Player extends Sprite {
      */
     private final float JUMP_Y_VELOCITY = 450.0f;
     private final float JUMP_X_MULTIPLIER = 10.0f;
+    private final float JUMP_Y_VELOCITY2 = 900.0f;
+    private final float JUMP_X_MULTIPLIER2 = 20.0f;
 
     /**
      * Trigger downwards velocity under which a jump will be permitted.
@@ -61,6 +64,7 @@ public class Player extends Sprite {
      * acceleration each frame.
      */
     private final float JUMP_VELOCITY_THRESHOLD = 25.0f;
+    private final float JUMP_VELOCITY_THRESHOLD2 = 50.0f;
 
     /**
      * Define the velocity below which the player can be considered to be stopped
